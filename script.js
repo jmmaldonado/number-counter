@@ -6,18 +6,36 @@ let count = Math.floor(Math.random() * 1000); // Generate random number 0-999
 counterDisplay.textContent = count; // Display the initial random number
 
 
-document.addEventListener('click', (event) => {
-    const windowWidth = window.innerWidth;
-    const clickX = event.clientX;
+function handleClickOrTap(event) {
+    if (event.type === 'click') { // Handle regular clicks
+        const windowWidth = window.innerWidth;
+        const clickX = event.clientX;
 
-    if (clickX > windowWidth / 2) { // Click on the right side
-        count++;
-    } else { // Click on the left side
-        count = Math.max(0, count - 1);
+        if (clickX > windowWidth / 2) {
+            count++;
+        } else {
+            count = Math.max(0, count - 1);
+        }
+
+        counterDisplay.textContent = count;
+
+    } else if (event.type === 'touchstart') { // Handle touch events
+        const windowWidth = window.innerWidth;
+        const touchX = event.touches[0].clientX;
+
+        if (touchX > windowWidth / 2) {
+            count++;
+        } else {
+            count = Math.max(0, count - 1);
+        }
+
+        counterDisplay.textContent = count;
     }
+}
 
-    counterDisplay.textContent = count;
-});
+
+document.addEventListener('click', handleClickOrTap);
+document.addEventListener('touchstart', handleClickOrTap);
 
 const readEnglishBtn = document.getElementById('read-english');
 const readSpanishBtn = document.getElementById('read-spanish');
