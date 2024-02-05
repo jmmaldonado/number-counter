@@ -6,9 +6,16 @@ let count = Math.floor(Math.random() * 1000); // Generate random number 0-999
 counterDisplay.textContent = count; // Display the initial random number
 
 
+let isUpdating = false;
+
+// In your increaseBtn and decreaseBtn event listeners:
 increaseBtn.addEventListener('click', () => {
+  if (isUpdating) return; // Exit if already updating
+
+  isUpdating = true;
   count++;
   counterDisplay.textContent = count;
+  isUpdating = false; 
 });
 
 decreaseBtn.addEventListener('click', () => {
