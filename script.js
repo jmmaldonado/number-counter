@@ -6,35 +6,32 @@ let count = Math.floor(Math.random() * 1000); // Generate random number 0-999
 counterDisplay.textContent = count; // Display the initial random number
 
 
-let isUpdating = false;
+document.addEventListener('click', (event) => {
+    const windowWidth = window.innerWidth;
+    const clickX = event.clientX;
 
-// In your increaseBtn and decreaseBtn event listeners:
-increaseBtn.addEventListener('click', () => {
-  if (isUpdating) return; // Exit if already updating
+    if (clickX > windowWidth / 2) { // Click on the right side
+        count++;
+    } else { // Click on the left side
+        count = Math.max(0, count - 1);
+    }
 
-  isUpdating = true;
-  count++;
-  counterDisplay.textContent = count;
-  isUpdating = false; 
+    counterDisplay.textContent = count;
 });
-
-decreaseBtn.addEventListener('click', () => {
-  count = Math.max(0, count - 1); // Prevent going below zero
-  counterDisplay.textContent = count;
-});
-
 
 const readEnglishBtn = document.getElementById('read-english');
 const readSpanishBtn = document.getElementById('read-spanish');
 
-readEnglishBtn.addEventListener('click', () => {
-  const utterance = new SpeechSynthesisUtterance(count.toString());
-  utterance.lang = 'en-US';
-  speechSynthesis.speak(utterance);
+readEnglishBtn.addEventListener('click', (event) => {
+    event.stopPropagation(); // Prevent clicks on flags from triggering the document listener
+    const utterance = new SpeechSynthesisUtterance(count.toString());
+    utterance.lang = 'en-US';
+    speechSynthesis.speak(utterance);
 });
 
-readSpanishBtn.addEventListener('click', () => {
-  const utterance = new SpeechSynthesisUtterance(count.toString());
-  utterance.lang = 'es-ES'; // Spanish (Spain)
-  speechSynthesis.speak(utterance);
+readSpanishBtn.addEventListener('click', (event) => {
+    event.stopPropagation(); // Prevent clicks on flags from triggering the document listener
+    const utterance = new SpeechSynthesisUtterance(count.toString());
+    utterance.lang = 'es-ES'; // Spanish (Spain)
+    speechSynthesis.speak(utterance);
 });
