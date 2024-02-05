@@ -1,0 +1,17 @@
+{
+    "short_name": "Counter",  
+    "name": "Counter Game",    
+    "description": "A simple, colorful counting game for kids", 
+    "icons": [
+      {
+        "src": "https://cdn-icons-png.freepik.com/512/3798/3798413.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "index.html", 
+    "display": "standalone",  
+    "background_color": "#f39c12",  
+    "theme_color": "#3498db" 
+  }
+  
