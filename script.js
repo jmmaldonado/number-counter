@@ -39,6 +39,7 @@ function handleClickOrTap(event) {
         }
     }
     updateFontSize()
+    changeCounterColor();
 }
 
 let resizeTimeout;
@@ -60,6 +61,25 @@ function updateFontSize() {
     counter.style.fontSize = calculatedFontSize + 'px';
 }
 
+function hashCode(str) { 
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = (str.charCodeAt(i) * 31) ^ hash; 
+      hash |= 0; // Convert to 32bit integer
+    }
+    return Math.abs(hash); // Keep result positive 
+}
+
+function colorFromHash(hash) {
+    const angle = hash % 360;
+    return `hsl(${angle}, 80%, 60%)`; // Use HSL color for vibrant variation
+}
+
+
+function changeCounterColor() {
+  const color = colorFromHash(hashCode(count.toString()));
+  counterDisplay.style.color = color; 
+}
 
 document.addEventListener('click', handleClickOrTap);
 document.addEventListener('touchend', handleClickOrTap);
@@ -67,14 +87,9 @@ window.addEventListener('orientationchange', handleOrientationChange);
 
 startGame()
 
-const readEnglishBtn = document.getElementById('read-english');
-const readSpanishBtn = document.getElementById('read-spanish');
-
-
 // Read aloud on number click
-counterDisplay.addEventListener('click', () => {
+counterDisplay.addEventListener('click', (event) => {
     event.stopPropagation(); // Prevent clicks on flags from triggering the document listener
-
     const selectedLanguage = languageSelect.value;
     const utterance = new SpeechSynthesisUtterance(count.toString());
     utterance.lang = selectedLanguage;
