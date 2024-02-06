@@ -1,49 +1,57 @@
 .container {
     text-align: center;
-    margin-top: 100px;
+    margin-top: 5px;
     font-family: sans-serif;
+    user-select: none;
 }
 
 h1 {
     color: #3498db;
     font-size: 5vw;
+    margin-bottom: 0; /* Remove default bottom margin on h1 */
+    margin-top: 0;
 
 }
 
 #counter {
-    font-size: 25em;
     font-weight: bold;
-    margin: 20px;
     color: #f39c12;
+    display: inline-block; /* Treat the counter like an inline image */
+    padding: 1px 1px;     /* Add some padding for visual breathing room */
+    border-radius: 5px;   /* Optional: Add rounded corners */
+    margin: 0;
+    line-height: 0.8; /* Start with a normal line-height */
+
 }
 
-button {
-    background-color: #2ecc71;
-    color: white;
-    border: none;
-    padding: 10px 20px;
+#language-select {
+    padding: 5px;
     border-radius: 5px;
-    cursor: pointer;
-    margin: 0 10px;
 }
 
-button i {
-    font-size: 96px;
-    /* Adjust the size as desired */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
-.flags {
-    margin-top: 20px;
-    z-index: 10;
+.dropdown {
+    margin-left: 40px;
 }
 
-.flags img {
-    width: 100px;
-    height: 60px;
-    margin: 0 10px;
-    cursor: pointer;
+#language-select {
+    padding: 0;
+    border: none;
+    background: none;
 }
 
-.container { /* Target the container holding your counter and other elements */
-    user-select: none; 
+/* Hide the flag text with additional styling to ensure spacing remains correct */
+#language-select option {
+    line-height: normal;
+    background-size: contain;
+}
+
+select {
+    font-size: 50px;
 }
