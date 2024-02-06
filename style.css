@@ -5,10 +5,21 @@
     user-select: none;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    /* Arrange items vertically */
+    align-items: center;
+    /* Center items horizontally */
+    height: 100vh;
+    font-family: sans-serif;
+}
+
 h1 {
     color: #3498db;
     font-size: 5vw;
-    margin-bottom: 0; /* Remove default bottom margin on h1 */
+    margin-bottom: 0;
+    /* Remove default bottom margin on h1 */
     margin-top: 0;
 
 }
@@ -16,11 +27,11 @@ h1 {
 #counter {
     font-weight: bold;
     color: #f39c12;
-    display: inline-block; /* Treat the counter like an inline image */
-    padding: 1px 1px;     /* Add some padding for visual breathing room */
-    border-radius: 5px;   /* Optional: Add rounded corners */
+    display: inline-block;
+    padding: 1px 1px;
+    border-radius: 5px;
     margin: 0;
-    line-height: 0.8; /* Start with a normal line-height */
+    line-height: 0.8;
 
 }
 
@@ -33,7 +44,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .dropdown {
@@ -54,4 +65,15 @@ h1 {
 
 select {
     font-size: 50px;
+}
+
+.counter-container {
+    flex: 1;
+    /* This makes the counter section grow to take up available space */
+    display: flex;
+    /* To center the counter inside this container */
+    align-items: center;
+    /* Vertically center the counter */
+    width: 100%;
+    justify-content: center;
 }

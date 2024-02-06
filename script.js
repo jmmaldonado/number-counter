@@ -24,16 +24,19 @@ function handleClickOrTap(event) {
         counterDisplay.textContent = count;
 
     } else if (event.type === 'touchend') { // Handle touch events
-        const windowWidth = window.innerWidth;
-        const touchX = event.touches[0].clientX;
+        if (event.touches && event.touches[0]) { // Add this check
 
-        if (touchX > windowWidth / 2) {
-            count++;
-        } else {
-            count = Math.max(10, count - 1);
+            const windowWidth = window.innerWidth;
+            const touchX = event.touches[0].clientX;
+
+            if (touchX > windowWidth / 2) {
+                count++;
+            } else {
+                count = Math.max(10, count - 1);
+            }
+
+            counterDisplay.textContent = count;
         }
-
-        counterDisplay.textContent = count;
     }
     updateFontSize()
 }
