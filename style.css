@@ -3,6 +3,8 @@ body {
     margin: 0;
     font-family: sans-serif;
     height: 100%;
+    background-color: #f1fafc;
+
 }
 
 .container {
@@ -46,7 +48,7 @@ h1 {
     width: 100%;
     background-color: #e6f4f9;
     border-bottom: 5px solid #ffbb55;
-    padding: 0px 00px;
+    padding: 0px 0px;
     border-radius: 0 0 15px 15px;
 }
 
@@ -98,11 +100,15 @@ select {
 }
 
 .column-left .control-button {
-    background-color: red;
+    background-color: hsl(0, 96%, 64%);
+    box-shadow: 0 3px 8px hsla(0, 96%, 44%, 0.8); /* Example shadow */ 
+
 }
 
 .column-right .control-button{
-    background-color: #2ecc71;
+    background-color: hsl(145, 63%, 49%);
+    box-shadow: 0 3px 8px hsla(145, 63%, 20%, 0.8); /* Example shadow */ 
+
 }
 
 
@@ -118,7 +124,7 @@ select {
     font-size: 36px;
     /* Increase font size too */
     text-align: center;
-    user-select: none;;
+    user-select: none;
 }
 
 @media (orientation: landscape) {
@@ -129,7 +135,7 @@ select {
 
     .column {
         margin: 10px;
-        opacity: 0.2;
+        /* opacity: 0.2; */
     }
 
     .column-left {
