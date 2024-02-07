@@ -11,10 +11,12 @@ function startGame() {
 }
 
 function handleClickOrTap(increment) {
+
     count += increment;
     counterDisplay.textContent = count;
     updateFontSize();
     changeCounterColor();
+
 }
 
 let resizeTimeout;
@@ -82,6 +84,12 @@ languageSelect.addEventListener('change', (event) => {
 const controlButtons = document.querySelectorAll('.control-button');
 
 controlButtons.forEach(button => {
-    button.addEventListener('click', () => { handleClickOrTap(parseInt(button.dataset.value)) });
-    button.addEventListener('touchend', () => { handleClickOrTap(parseInt(button.dataset.value)) });
+    button.addEventListener('click', (event) => { 
+        event.preventDefault(); // Prevent potential subsequent click
+        handleClickOrTap(parseInt(button.dataset.value)) 
+    });
+    button.addEventListener('touchend', (event) => {
+        event.preventDefault(); // Prevent potential subsequent click
+        handleClickOrTap(parseInt(button.dataset.value))
+    });
 });
