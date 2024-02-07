@@ -15,11 +15,31 @@ function handleClickOrTap(increment) {
         return;
     } 
     count += increment;
-    counterDisplay.textContent = count.toLocaleString('de-DE', {maximumFractionDigits: 0});
+    counterDisplay.textContent = formatNumberWithDots(count);
     updateFontSize();
     changeCounterColor();
 
 }
+
+function formatNumberWithDots(number) {
+    const numberString = number.toString(); // Convert to string
+    const parts = [];
+    let count = 0;
+  
+    // Iterate backwards through the number string 
+    for (let i = numberString.length - 1; i >= 0; i--) {
+      parts.unshift(numberString[i]); // Add digit to the start of the 'parts' array 
+      count++;
+  
+      // Add dot separator every 3 digits (unless at the beginning)
+      if (count % 3 === 0 && i !== 0) { 
+        parts.unshift('.'); 
+      }
+    }
+  
+    return parts.join(''); // Join the array of digits and separators
+  }
+  
 
 let resizeTimeout;
 function handleOrientationChange() {
