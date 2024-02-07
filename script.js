@@ -88,7 +88,7 @@ controlButtons.forEach(button => {
         event.preventDefault(); // Prevent potential subsequent click
         handleClickOrTap(parseInt(button.dataset.value)) 
     });
-    button.addEventListener('touchend', (event) => {
+    button.addEventListener('touchstart', (event) => {
         event.preventDefault(); // Prevent potential subsequent click
         handleClickOrTap(parseInt(button.dataset.value))
     });
