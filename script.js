@@ -13,7 +13,7 @@ function startGame() {
 function handleClickOrTap(increment) {
 
     count += increment;
-    counterDisplay.textContent = count;
+    counterDisplay.textContent = count.toLocaleString('de-DE', {maximumFractionDigits: 0});
     updateFontSize();
     changeCounterColor();
 
