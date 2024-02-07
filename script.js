@@ -11,7 +11,9 @@ function startGame() {
 }
 
 function handleClickOrTap(increment) {
-
+    if (count + increment < 0) {
+        return;
+    } 
     count += increment;
     counterDisplay.textContent = count.toLocaleString('de-DE', {maximumFractionDigits: 0});
     updateFontSize();
@@ -33,7 +35,8 @@ function updateFontSize() {
 
     // Calculate font size in pixels
     const fontSizePercentage = desiredWidthPercentage; // Adjust font size percentage  
-    const calculatedFontSize = Math.ceil((fontSizePercentage / 100) * window.innerWidth / numDigits);
+    let calculatedFontSize = Math.ceil((fontSizePercentage / 100) * window.innerWidth / numDigits);
+    calculatedFontSize = Math.min(calculatedFontSize, 305); // Limit font size to 100px
 
     counter.style.fontSize = calculatedFontSize + 'px';
 }
